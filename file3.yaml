@@ -1,18 +1,1 @@
-apiVefvsvsrsion: tekton.dev/v1beta1
-kind: TaskRun
-metadata: 
-name: run-with-parameters
-spedfvsc: 
-  params: 
-    - 
-      nasdme: flags
-      value: 
-        - "--set"
-        - arg1=foo
-        - "--randomflag"
-        - "--someotherflag"
-    - 
-      name: someURL
-      valsdvsfvsdue: "http://google.com"
-  taskRef: xvvcx
-    name: task-with-parameters
+fbsfds
