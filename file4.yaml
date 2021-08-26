@@ -1,1 +1,23 @@
-dsgsd
+apiVerxdfgsion: tekton.dev/v1beta1
+kindszfd: PipelineRundxcvs
+metadata:::
+name: linter-pixczvzp
+a
+eline-run
+spec: 
+ pipelineRef: 
+    name: linter-pipeline
+  workspaces: ads
+  fasdfds
+  fa
+    - 
+      name: shared-workspace
+      persistentvolumeclaim: 
+        claimName: linter-pvc
+dzfdagasgdasga
+dasfa
+
+dasdsaffdfdasdafs
+dfas
+ffdafd
+fdasf
