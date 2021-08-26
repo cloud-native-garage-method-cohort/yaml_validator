@@ -1,16 +1,18 @@
 apiVersion: tekton.dev/v1beta1
-kind: TaskRun
+kind: Task
 metadata:
-  name: run-with-parameters
+  name: tekton-task-assignment
 spec:
-  taskRef:
-    name: task-with-parameters
-  params:
-    - name: flags
-      value:
-        - "--set"
-        - "arg1=foo"
-        - "--randomflag"
-        - "--someotherflag"
-    - name: someURL
-      value: "http://nintendo.com"
+  steps:
+  - name: retrieve-yaml
+    Image: quay.io/ibmgaragecloud/alpine-curl
+    script: |
+      mkdir -p /workspace/k8s | cd /workspace/k8s | curl -o /workspace/run-steps-as-non-root.yaml https://raw.githubusercontent.com/tektoncd/pipeline/main/examples/v1beta1/taskruns/run-steps-as-non-root.yaml 
+  - name: extract-task
+    Image: quay.io/ibmgaragecloud/alpine-curl
+    script: |
+      cd /workspace/k8s | head -24 /workspace/run-steps-as-non-root.yaml >> /workspace/run-steps-as-non-root-task-only.yaml
+  - name: swap-image
+    Image: quay.io/ibmgaragecloud/alpine-curl
+    script: |
+      sed 's+ubuntu+quay.io/ibmgaragecloud/alpine-curl+g' /workspace/run-steps-as-non-root.yaml >> /workspace/run-steps-as-non-root-alpine-task.yaml
